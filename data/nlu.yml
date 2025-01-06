@@ -1,0 +1,208 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+# - intent: ev_performance
+#   examples: |
+#     - What is the speed of the EV?
+#     - Tell me about acceleration data
+#     - How much voltage does it use?
+
+# - intent: locate_charging_station
+#   examples: |
+#     - Where are the nearest charging stations?
+#     - Find me a charging station
+#     - Are there any charging stations nearby?
+
+- intent: location_related_charging_station
+  examples: |
+    - How many charging stations in [Tokyo](location)?
+    - Where can I find charging stations in [New York](location)?
+    - Show me charging stations in [Paris](location)
+    - I need a charging station in [London](location)
+    - Are there charging stations in [Berlin](location)?
+    - How many charging stations are there in [Tokyo](location)?
+    - Tell me about the charging stations in [San Francisco](location)
+    - What is the nearest charging station to [Seattle](location)?
+    - Find charging stations in [Los Angeles](location)
+    - Tell me about [Tokyo](location)
+    - How many in [Mumbai](location)?
+    - What about [London](location)
+    - what about [Mumbai](location)
+    - [Mumbai](location)
+    - [Tokyo](location)
+
+
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: refresh_the_conversation
+  examples: |
+    - start over
+    - let's start again
+    - can we start over?
+    - start the conversation again
+    - can we begin again?
+    - restart
+    - start again
+
+- intent: ask_about_model
+  examples: |
+    - Tell me about the [Tesla Model 3](model)
+    - What is the [Tesla Model 3](model)?
+    - Tell me about the [Model](model)
+    - What is the [Chevy Bolt](model)?
+    - Tell me about the [Nissan Leaf](model)
+    - I want information about the [Ford Mustang](model)
+    - What can you tell me about the [BMW X5](model)
+    - Do you have details on the [Toyota Corolla](model)
+
+
+- intent: ask_battery_life_specific_model
+  examples: |
+    - How long does the battery last in the [Tesla Model 3](model)?
+    - Whats the battery life of the [Nissan Leaf](model)?
+    - How many miles can the [Chevy Bolt](model) go on a full charge?
+    - Tell me the range of a [Tesla Model S](model)
+    - Hows the battery life of [Tesla Model 3](model)?
+    - Battery life of [Model](model)
+    - whats the range of [Tesla Model S](model)
+    - How long does the [Chevy Bolt](model) battery last
+    - How many miles can the [Nissan Leaf](model) go on a full charge
+    - Whats the battery life of the [Tesla Model 3](model)?
+
+
+
+- intent: ask_performance_specific_model
+  examples: |
+    - How fast can the [Tesla Model 3](model) go?
+    - What is the performance of the [Nissan Leaf](model)?
+    - Tell me about the acceleration of the [Tesla Model S](model).
+    - Whats the 0-60 time of the [Chevy Bolt](model)?
+    - How fast can the [Tesla Model 3](model) go from 0-60
+    - What is the performance of the [Tesla Model S](model)?
+    - And for the [Nissan Leaf](model)
+    - And for the [Tesla Model 3](model) 
+
+
+- intent: ask_battery_life
+  examples: |
+    - What is the battery life?
+    - Tell me the battery life of the car
+    - How long does the battery last?
+    - How many miles can the battery go?
+    - Whats the battery life?
+    - What is the battery capacity of the EV?
+    - How much power can the battery hold
+    - How much energy can the battery store
+    - What is the battery size
+    - How much is the battery capacity
+    - What is the battery capacity of the car
+
+
+- intent: ask_performance
+  examples: |
+    - What is the performance of the car?
+    - How fast can the car go?
+    - What is the acceleration time?
+    - How fast is the car?
+    
+- intent: ask_range
+  examples: |
+    - What is the range of the car?
+    - How far can the car go on a single charge?
+    - What's the range of the battery?
+    - How many miles can it travel?
+    - What is the driving range of this car?
+
+- intent: ask_price
+  examples: |
+    - How much does the car cost?
+    - What is the price of the car?
+    - How much is the car?

@@ -1,0 +1,175 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+# - rule: Handle location-related charging station queries
+#   steps:
+#     - intent: location_related_charging_station
+#     - action: utter_ask_location
+#     - condition:
+#         - slot_was_set:
+#             - location: null
+#     - action: action_find_charging_station
+# - rule: Handle location-related charging station queries
+#   steps:
+#   - intent: location_related_charging_station
+#   - action: action_find_charging_station
+
+- rule: Handle location-related charging station queries
+  condition:
+    - slot_was_set:
+        - location: true
+  steps:
+    - intent: location_related_charging_station  # User provides location
+    - action: action_find_charging_station  # Bot processes the location and finds charging stations
+
+- rule: Ask for location if it's not set
+  condition:
+    - slot_was_set:
+        - location: null
+  steps:
+    - action: action_ask_location  # Bot asks for location
+
+
+- rule: Refresh conversation
+  steps:
+    - action: action_refresh_conversation
+
+- rule: Reset conversation and preserve location
+  steps:
+    - intent: refresh_the_conversation 
+    - action: utter_refresh
+    - action: action_refresh_conversation
+
+
+
+# - rule: ev battery capacity
+#   condition: 
+#     - slot_was_set:
+#       - model: true
+#   steps:
+#     - intent: ask_battery_life
+#     - action: action_find_car_info
+
+#FINDS BATTERY LIFE:--------------------------------------
+- rule: Find battery life when model is set
+  condition:
+    - slot_was_set:
+        - model: true  # Check if the model slot is filled
+  steps:
+    - intent: ask_battery_life  # If the user asks for battery life
+    - action: action_find_car_info  # Perform action to fetch battery life info
+
+- rule: Find battery life if model not set 
+  condition: 
+    - slot_was_set:
+      - model: null
+  steps:
+  - action: action_ask_model
+  # - action: action_find_car_info
+#--------------------------------
+
+#FINDS PERFORMANCE:---------------------------------
+- rule: Find performance when model is set
+  condition:
+    - slot_was_set:
+        - model: true  # Check if the model slot is filled
+  steps:
+    - intent: ask_performance  # If the user asks for battery life
+    - action: action_find_car_info  # Perform action to fetch battery life info
+
+- rule: Find performance if model not set 
+  condition: 
+    - slot_was_set:
+      - model: null
+  steps:
+  # - intent: ask_performance
+  - action: action_ask_model
+  # - action: action_find_car_info
+#--------------------------------
+#FINDS RANGE:---------------------------------
+- rule: Find range when model is set
+  condition:
+    - slot_was_set:
+        - model: true  # Check if the model slot is filled
+  steps:
+    - intent: ask_range  # If the user asks for battery life
+    - action: action_find_car_info  # Perform action to fetch battery life info
+
+- rule: Find range if model not set 
+  condition: 
+    - slot_was_set:
+      - model: null
+  steps:
+  # - intent: ask_range
+  - action: action_ask_model
+  # - action: action_find_car_info
+#--------------------------------
+#FIND PRICE:----------------------------------
+- rule: Find price when model is set
+  condition:
+    - slot_was_set:
+        - model: true  # Check if the model slot is filled
+  steps:
+    - intent: ask_price  # If the user asks for battery life
+    - action: action_find_car_info  # Perform action to fetch battery life info
+
+- rule: Find price if model not set 
+  condition: 
+    - slot_was_set:
+      - model: null
+  steps:
+  # - intent: ask_price
+  - action: action_ask_model
+  # - action: action_find_car_info
+#--------------------------------
+
+- rule: asking specific model battery info
+  condition:
+    - slot_was_set:
+      - model: true
+  steps:
+  - intent: ask_battery_life_specific_model
+  - action: action_find_car_info
+
+
+- rule: asking specific model performance info
+  condition:
+    - slot_was_set:
+      - model: true
+  steps:
+  - intent: ask_performance_specific_model
+  - action: action_find_car_info
+
+
+
+- rule: Finding info about a model
+  condition: 
+  - slot_was_set:
+    - model: true  # Check if the model slot is filled
+  steps:
+    - intent: ask_about_model  # If the user asks for model info
+    - action: action_find_all_car_info
+
+- rule: Respond to ask_about_model
+  steps:
+    - intent: ask_about_model
+    - action: action_find_all_car_info
+
+
+- rule: Ask for model if it's not set
+  condition:
+    - slot_was_set:
+        - model: null
+  steps:
+    - action: action_ask_model  # Bot asks for location

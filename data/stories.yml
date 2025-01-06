@@ -1,0 +1,113 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+# - story: ask EV performance
+#   steps:
+#   - intent: ev_performance
+#   - action: utter_ev_performance
+
+# - story: greet and ask location
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - action: action_ask_location
+#     - intent: location_related_charging_station
+#     - action: action_find_charging_station
+    
+# - story: ask location
+#   steps:
+#     - intent: location_related_charging_station
+#     - action: action_ask_location
+#     - intent: location_related_charging_station
+#     - action: action_find_charging_station
+
+# - story: greet and ask location
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - action: action_ask_location  # Asks for location if not filled
+#     - intent: location_related_charging_station  # User provides location
+#     - action: action_find_charging_station  # Finds charging stations based on location
+
+# - story: ask location and find charging stations
+#   steps:
+#     - intent: location_related_charging_station  # User asks for charging stations
+#     - action: action_ask_location  # Asks for location if slot is empty
+#     - intent: location_related_charging_station  # User provides location
+#     - action: action_find_charging_station  # Finds charging stations based on location
+
+
+# - story: Find charging stations with location
+#   steps:
+#     - intent: location_related_charging_station
+#       entities:
+#         - location: "Tokyo"
+#     - action: action_find_charging_station
+#     - action: utter_found_charging_stations
+
+# - story: Find charging stations without location
+#   steps:
+#     - intent: location_related_charging_station
+#     - action: action_find_charging_station
+#     - slot_was_set:
+#         - location: null
+#     - action: action_ask_location
+
+
+# - story: Greet and ask location
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - action: action_ask_location
+#     - intent: location_related_charging_station
+#     - action: action_find_charging_station
+
+
+# - story: Ask for charging stations with location
+#   steps:
+#     - intent: location_related_charging_station  # User asks for charging stations
+#     - action: action_ask_location  # Bot asks for location if not set
+#     - intent: location_related_charging_station  # User provides location
+#     - action: action_find_charging_station  # Bot finds charging stations based on location
+
+# - story: Ask for charging stations without location
+#   steps:
+#     - intent: location_related_charging_station  # User asks for charging stations
+#     - action: action_ask_location  # Bot asks for location if not set
+#     - intent: location_related_charging_station  # User provides location
+#     # - action: action_find_charging_station
+#     - action: action_find_charging_station  # Bot finds charging stations based on location
+
+
+# - story: ev performance
+#   steps:
+#   - intent: ev_performance
+#   - action: utter_ev_performance

@@ -1,0 +1,114 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  # - ev_performance
+  # - locate_charging_station
+  - location_related_charging_station
+  - refresh_the_conversation
+  # - ev_battery_capacity
+  - ask_battery_life_specific_model
+  - ask_performance_specific_model
+  - ask_performance
+  - ask_battery_life
+  - ask_range
+  - ask_price
+  - ask_about_model
+  
+
+entities:
+  - location
+  - model
+  - lastreq
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hello! What would you like to know about EVs?"
+  - text: "Hi there! Ask me anything about electric vehicles."
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  # utter_ev_performance:
+  # - text: "The EV reaches a speed of 120 km/h, with an average acceleration of 3 m/s², consuming 0.2 kWh per kilometer."
+
+  # utter_ev_battery_cap:
+  # - text: "The EV has a battery capacity of 40 kWh"
+
+  utter_refresh:
+  - text: "refreshing..."
+
+  # utter_ask_location:
+  #   - text: "Could you specify the location?"
+
+  # utter_unknown_location:
+  #   - text: "Sorry, I don't have data for charging stations in {location}."
+
+  # utter_found_charging_stations:
+  #   - text: "Here are the charging locations in {location}"
+
+  # utter_ask_location:
+  #   - text: "Could you specify the location?"
+
+  # utter_unknown_location:
+  #   - text: "Sorry, I don't have data for charging stations in {location}."
+
+  # utter_found_charging_stations:
+  #   - text: "There are {station_count} charging stations in {location}."
+
+actions:
+# - action_charging_station
+- action_ask_location
+- action_ask_model
+- action_find_charging_station
+- action_refresh_conversation
+- action_find_all_car_info
+- action_find_car_info
+
+
+slots:
+  location:
+    type: text
+    influence_conversation: false  # Prevents over-influencing predictions
+    mappings:   
+      - type: from_entity
+        entity: location
+  model:
+    type: text
+    influence_conversation: false
+    mappings: 
+      - type: from_entity
+        entity: model
+  lastreq:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: lastreq
+  
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

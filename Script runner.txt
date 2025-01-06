@@ -1,0 +1,22 @@
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+
+place this into powershell to be able to run scripts remember/
+
+
+
+To revert the policy :
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Restricted
+T
+|
+its safer to do the code thats above
+
+this is the script :
+rasa_env\Scripts\activate
+
+
+
+
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+rasa_env\Scripts\activate
