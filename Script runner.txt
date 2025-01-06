@@ -20,6 +20,6 @@ rasa_env\Scripts\activate
 
 
 
-
+python -m venv rasa_env
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 rasa_env\Scripts\activate
